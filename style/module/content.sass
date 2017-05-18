@@ -1,0 +1,413 @@
+.search
+    display: flex
+    justify-content: space-between
+    align-items: center
+    position: absolute
+    z-index: 2
+    width: 32rem
+    height: 3rem
+    top: 50vh
+    left: 50vw
+    margin: -1.5rem 0 0 -16rem
+    background: #fff
+    box-shadow: 0 12px 24px 0 rgba(0,0,0,0.06)
+    @extend .transition
+    @media (max-width: 568px)
+        width: 20rem
+        margin-left: -10rem
+    &__icon
+        width: 1.5rem
+        text-align: right
+        margin-right: 1.125rem
+        cursor: pointer
+        color: $lightGray
+        @extend .transition
+        & > *
+            @extend .notClickable
+    input
+        width: calc(100% - 1.5rem)
+        height: 100%
+        padding: 0 0 0 1.5rem
+        &:focus + button
+            color: $black
+    &--top
+        top: 2rem
+        margin-top: 0
+        border-bottom: 1px solid $mainColor
+        input, .search__icon
+            color: $black
+        @media (max-width: 1000px)
+            width: 40vw
+            margin-left: -20vw
+        @media (max-width: 768px)
+            width: 86%
+            left: 50%
+            top: 6rem
+            margin-left: -43%
+
+.list
+    display: flex
+    flex-flow: row wrap
+    margin: 2rem -1rem 7rem 0
+    @media (max-width: 768px)
+        margin-top: 6rem
+    &__item
+        position: relative
+        width: calc(100% / 6 - 1rem)
+        height: 18rem
+        background: #ffffff
+        box-shadow: 0 12px 18px 0 rgba(0,0,0,0.06)
+        margin: 0 1rem 1rem 0
+        overflow: hidden
+        cursor: pointer
+        @extend .transition
+        @media (max-width: 1400px)
+            width: calc(100% / 5 - 1rem)
+        @media (max-width: 1100px)
+            width: calc(100% / 3 - 1rem)
+        @media (max-width: 768px)
+            width: calc(100% / 2 - 1rem)
+        @media (max-width: 500px)
+            width: 100%
+        & > *
+            @extend .notClickable
+        .cover
+            position: relative
+            display: flex
+            justify-content: center
+            align-items: center
+            height: 10rem
+            overflow: hidden
+            .opacity
+                position: absolute
+                top: 0
+                left: 0
+                z-index: 1
+                width: 100%
+                height: 100%
+                background: $black
+            img
+                position: relative
+                z-index: 2
+                width: auto
+                height: 14rem
+                opacity: .16
+        .details
+            height: calc(100% - 10rem)
+            padding: 16px
+            display: flex
+            flex-flow: column
+            justify-content: space-between
+            font-size: 14px
+            & > div:first-child
+                display: block
+                padding-right: 1rem
+                width: 100%
+                line-height: 1.5
+            & > div:last-child
+                color: $mainColor
+        .selected
+            display: none
+        .back
+            position: absolute
+            width: 100%
+            height: 100%
+            bottom: -100%
+            left: 0
+            background: $mainColor
+            color: #fff
+            display: flex
+            justify-content: center
+            align-items: center
+            @extend .transition
+            z-index: 3
+            div
+                display: block
+                padding-right: 1rem
+                position: absolute
+                left: 1rem
+            .title
+                top: 1rem
+            .date
+                bottom: 1rem
+            .play
+                top: 50%
+                left: 50%
+                margin-top: -2rem
+                margin-left: -2rem
+                width: 4rem
+                height: 4rem
+                line-height: 4rem
+                text-align: center
+                i
+                    font-size: 4rem
+            img
+                width: auto
+                height: 100%
+                opacity: .16
+        &:hover > div.back
+            bottom: 0
+
+.player
+    display: flex
+    justify-content: space-between
+    align-items: center
+    width: 100%
+    height: 5rem
+    position: fixed
+    bottom: 0
+    left: 0
+    z-index: 7
+    background: #ffffff
+    box-shadow: 0 -24px 48px 0 rgba(0,0,0,.04)
+    @media (max-width: 768px)
+        justify-content: center
+    &__control
+        display: flex
+        justify-content: space-around
+        align-items: center
+        width: 16rem
+        height: 3rem
+        .play
+            width: 3rem
+            height: 3rem
+            border-radius: 100%
+            line-height: 3rem
+            text-align: center
+            color: #fff
+            cursor: pointer
+            background-image: linear-gradient(-230deg, #F98082 0%, #FC4F52 100%)
+            i
+                font-size: 1.5rem
+        .backward, .nextward, .shuffle, .repeat
+            color: $lightGray
+            cursor: pointer
+        .shuffle, .repeat
+            &--selected
+                color: $mainColor
+    &__left
+        display: flex
+        height: 3rem
+        align-items: center
+        margin: 0 0 0 3rem
+        min-width: 22rem
+        @media (max-width: 768px)
+            display: none
+        .userList
+            margin: 0 2rem 0 0
+            padding: 0.4rem 1.6rem
+            background: $lightGray
+            color: #fff
+            text-transform: uppercase
+            font-size: 0.875rem
+            cursor: pointer
+            &--active
+                background: $mainColor
+        .like
+            margin: 0 1rem 0 0
+            color: $lightGray
+            cursor: pointer
+            &--active
+                color: $mainColor
+        .title
+            font-size: 0.875rem
+            width: 12rem
+            overflow: hidden
+            white-space: nowrap
+            cursor: pointer
+    &__right
+        display: flex
+        justify-content: flex-end
+        align-items: center
+        min-width: 22rem
+        margin: 0 3rem 0 0
+        @media (max-width: 768px)
+            display: none
+        .videoMode
+            width: 2rem
+            height: 2rem
+            border-radius: 100%
+            background: $lightGray
+            color: #fff
+            text-align: center
+            line-height: 2rem
+            margin: 0 2rem 0 0
+            cursor: pointer
+            & > *
+                pointer-events: none
+            i
+                font-size: 1rem
+            &--active
+                background: $mainColor
+        .volume
+            color: $lightGray
+            margin-right: 1rem
+        .volumeBar
+            position: relative
+            &__active
+                position: absolute
+                z-index: 3
+                background: $mainColor
+                height: 4px
+                top: 0
+            input[type="range"]
+                position: relative
+                display: block
+                -webkit-appearance: none
+                background-color: $lightGray
+                width: 14rem
+                height: 4px
+                outline: 0
+                &::-moz-range-thumb
+                    display: none
+                    position: relative
+                    z-index: 5
+                    background-color: $black
+                    width: 1rem
+                    height: 1rem
+                    border-radius: 100%
+                    cursor: pointer
+                    transition: all .3s ease-in-out
+                    border: 0
+                &::-moz-range-thumb:active
+                    background: $mainColor
+                &::-webkit-slider-thumb
+                    display: none
+                    position: relative
+                    z-index: 5
+                    -webkit-appearance: none
+                    background-color: $black
+                    width: 1rem
+                    height: 1rem
+                    border-radius: 100%
+                    cursor: pointer
+                    transition: all .3s ease-in-out
+                    border: 0
+                &::-webkit-slider-thumb:active
+                    background: $mainColor
+            &:hover > input::-moz-range-thumb
+                display: block
+            &:hover > input::-webkit-slider-thumb
+                display: block
+    &__hidden
+        position: absolute
+        width: 0
+        height: 0
+        overflow: hidden
+
+.selectedBackground
+    display: none
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: #fff
+    z-index: 4
+    &--opened
+        display: block
+
+.selectedVideo
+    position: fixed
+    z-index: 5
+    width: calc(100% - 6rem)
+    height: calc(100% - 14rem)
+    top: 5rem
+    display: none
+    justify-content: center
+    align-items: center
+    &--opened
+        display: flex
+        flex-flow: column wrap
+        animation-name: selectedVideo
+        animation-duration: 1s
+        animation-iteration-count: 1
+    &__photo
+        width: 20rem
+        height: 20rem
+        border-radius: 100%
+        overflow: hidden
+        display: flex
+        justify-content: center
+        align-items: center
+        margin: 0 0 2rem 0
+        position: relative
+    &__title
+        font-weight: 500
+        text-transform: uppercase
+        letter-spacing: 2px
+        text-align: center
+    &__backToList
+        position: fixed
+        top: 2rem
+        left: 0
+        width: 100%
+        text-align: center
+        cursor: pointer
+        color: $mainColor
+
+.likeList
+    position: fixed
+    bottom: 5rem
+    width: 24rem
+    height: auto
+    max-height: 0
+    background: #fff
+    box-shadow: 0 -32px 32px 0 rgba(0, 0, 0, 0.04)
+    z-index: 7
+    overflow: hidden
+    @extend .transition
+    &--opened
+        max-height: 24rem
+        height: 24rem
+        overflow-y: scroll
+    &__search
+        position: relative
+        width: 100%
+        height: 4rem
+        i
+            position: absolute
+            top: 50%
+            right: 2rem
+            margin-top: -.75rem
+            cursor: pointer
+            color: $lightGray
+            @extend .transition
+        input
+            width: 100%
+            height: 100%
+            border-bottom: 1px solid $lightGray
+            padding: 0 2rem
+            font-size: .875rem
+            @extend .transition
+            &:focus
+                color: $black
+                border-bottom: 1px solid $mainColor
+            &:focus + i
+                color: $black
+    &__item
+        display: flex
+        width: 100%
+        height: 5rem
+        align-items: center
+        justify-content: space-between
+        padding: 0 2rem
+        cursor: pointer
+        & > *
+            pointer-events: none
+        &:nth-child(odd)
+            background: #F7F7F7
+        & > div
+            padding: 0 1rem 0 0
+            font-size: 0.875rem
+        & > div span:first-child
+            margin: 0 1rem 0 0
+        & > span
+            width: 8px
+            height: 8px
+            border-radius: 100%
+            background: transparent
+        &--active
+            color: $mainColor
+            & > span
+                background: $mainColor

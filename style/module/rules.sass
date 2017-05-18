@@ -1,0 +1,41 @@
+.container
+    padding: 2rem 2.875rem 0 2.875rem
+
+.alert
+    position: fixed
+    display: none
+    bottom: 6rem
+    width: 26rem
+    height: 6rem
+    z-index: 10
+    border-radius: 4px
+    align-items: center
+    background: #fff
+    box-shadow: 0 -24px 32px 0 rgba(0,0,0,0.08)
+    &__icon
+        width: 3rem
+        height: 3rem
+        border-radius: 100%
+        color: #fff
+        text-align: center
+        line-height: 3rem
+        margin: 0 0 0 2rem
+    &__text
+        margin: 0 0 0 2rem
+    &--opened
+        display: flex
+        animation-name: alert
+        animation-duration: 1s
+        animation-iteration-count: 1
+    &--success
+        .alert__icon
+            background: #20FC8F
+    &--info
+        .alert__icon
+            background: #67AAF9
+    &--closed
+        display: none
+        animation-name: alert-close
+        animation-duration: 1s
+        animation-iteration-count: 1
+

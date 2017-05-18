@@ -1,0 +1,25 @@
+.header
+    display: flex
+    height: 3rem
+    align-items: center
+    justify-content: space-between
+    position: relative
+    z-index: 1
+    &__logo
+        font-size: 0.875rem
+        color: $mainColor
+        text-transform: uppercase
+        font-weight: 700
+        user-select: none
+        cursor: pointer
+        position: relative
+        z-index: 4
+    &__icons
+        position: relative
+        z-index: 4
+        & > a
+            margin-left: 1rem
+            color: $gray
+            @extend .transition
+            &:hover
+                color: $mainColor
