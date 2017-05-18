@@ -1,7 +1,7 @@
 {
-  "name": "todoapp",
+  "name": "youtube search app",
   "version": "1.0.0",
-  "description": "minimalist to do app that created with react",
+  "description": "basic & simple youtube search app",
   "main": "index.js",
   "scripts": {
     "start": "webpack --watch"
