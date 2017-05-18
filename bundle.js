@@ -11399,17 +11399,12 @@ var Header = function Header(props) {
             { className: "header__icons" },
             _react2.default.createElement(
                 "a",
-                { href: "#" },
-                _react2.default.createElement("i", { className: "ion-beer" })
-            ),
-            _react2.default.createElement(
-                "a",
                 { href: "https://trello.com/b/TejBS8sR/youtube-search-app", target: "_blank" },
                 _react2.default.createElement("i", { className: "ion-android-list" })
             ),
             _react2.default.createElement(
                 "a",
-                { href: "#" },
+                { href: "https://github.com/erdemuslu/youtube-search-app" },
                 _react2.default.createElement("i", { className: "ion-social-github" })
             )
         )
@@ -12026,7 +12021,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 __webpack_require__(134);
 
-var API_KEY = 'AIzaSyDjERV3mpPYgihzjurvhjncJHYwCq4RXkM';
+var API_KEY = 'AIzaSyDjERV3mpPYgihzjurvhjncJHYwCq4RXkM'; // ADD API KEY
 
 var App = function (_Component) {
     _inherits(App, _Component);

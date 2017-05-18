@@ -9,9 +9,8 @@ const Header = (props) => {
                 Youtube Search
             </div>
             <div className="header__icons">
-                <a href="#"><i className="ion-beer"></i></a>
                 <a href="https://trello.com/b/TejBS8sR/youtube-search-app" target="_blank"><i className="ion-android-list"></i></a>
-                <a href="#"><i className="ion-social-github"></i></a>
+                <a href="https://github.com/erdemuslu/youtube-search-app"><i className="ion-social-github"></i></a>
             </div>
         </div>
     )

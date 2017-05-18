@@ -6,7 +6,7 @@ import Header from './header'
 import Search from './search'
 import List from './list'
 import YTSearch from 'youtube-api-search'
-const API_KEY = 'AIzaSyDjERV3mpPYgihzjurvhjncJHYwCq4RXkM'
+const API_KEY = 'AIzaSyDjERV3mpPYgihzjurvhjncJHYwCq4RXkM' // ADD API KEY
 
 class App extends Component {
     constructor(props) {
