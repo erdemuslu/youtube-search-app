@@ -353,7 +353,7 @@
     height: auto
     max-height: 0
     background: #fff
-    box-shadow: 0 -32px 32px 0 rgba(0, 0, 0, 0.04)
+    box-shadow: 0 -12px 24px 0 rgba(0, 0, 0, 0.04)
     z-index: 7
     overflow: hidden
     @extend .transition
@@ -361,6 +361,8 @@
         max-height: 24rem
         height: 24rem
         overflow-y: scroll
+        &::-webkit-scrollbar
+            display: none
     &__search
         position: relative
         width: 100%
