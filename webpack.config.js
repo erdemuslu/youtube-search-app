@@ -2,7 +2,7 @@ let webpack = require('webpack');
 
 let config = {
 
-	entry: './src/components/app.js',
+	entry: './src/app.js',
 
 	output: {
 		filename: './dist/bundle.js'

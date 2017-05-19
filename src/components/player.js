@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import YouTube from 'react-youtube'
-import Marquee from 'react-marquee'
 
 class Player extends Component {
     constructor(props) {
@@ -44,9 +43,7 @@ class Player extends Component {
                     <div
                         className="title"
                         onClick={this.props.reOpen}>
-                        <Marquee
-                            text={this.props.title}
-                        />
+                        {this.props.title}
                     </div>
                 </div>
                 <div className="player__control">

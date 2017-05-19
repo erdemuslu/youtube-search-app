@@ -1,10 +1,10 @@
-require('../../style/build.sass');
+require('../style/build.sass');
 
 import React, {Component} from 'react'
 import {render} from 'react-dom'
-import Header from './header'
-import Search from './search'
-import List from './list'
+import Header from './components/header'
+import Search from './components/search'
+import List from './components/list'
 import YTSearch from 'youtube-api-search'
 
 const API_KEY = 'AIzaSyDB2KOGDuVyRLJ6wBebjLE52hm0vGbadwc'; // ADD API KEY
