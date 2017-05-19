@@ -1,6 +1,6 @@
 {
-  "name": "youtube search app",
-  "version": "1.0.0",
+  "name": "youtube-search-app",
+  "version": "1.0.1",
   "description": "basic & simple youtube search app",
   "main": "index.js",
   "scripts": {

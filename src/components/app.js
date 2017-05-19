@@ -1,4 +1,4 @@
-require('../../style/build.sass')
+require('../../style/build.sass');
 
 import React, {Component} from 'react'
 import {render} from 'react-dom'
@@ -6,11 +6,12 @@ import Header from './header'
 import Search from './search'
 import List from './list'
 import YTSearch from 'youtube-api-search'
-const API_KEY = 'AIzaSyDjERV3mpPYgihzjurvhjncJHYwCq4RXkM' // ADD API KEY
+
+const API_KEY = 'AIzaSyDB2KOGDuVyRLJ6wBebjLE52hm0vGbadwc'; // ADD API KEY
 
 class App extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             completedSearch: false,
             listView: false,
@@ -18,15 +19,15 @@ class App extends Component {
             youtube: {
                 videoId: '',
             }
-        }
-        this.completedSearch = this.completedSearch.bind(this)
+        };
+        this.completedSearch = this.completedSearch.bind(this);
         this.backHome = this.backHome.bind(this)
     }
 
     render() {
         return (
             <div className="container">
-                <Header 
+                <Header
                     onClick={this.backHome}
                 />
                 <List
@@ -42,12 +43,12 @@ class App extends Component {
     }
 
     completedSearch(event) {
-        event.preventDefault()
+        event.preventDefault();
         this.setState({
-            completedSearch: true,            
+            completedSearch: true,
             listView: true
-        })
-        YTSearch({key: API_KEY, term: event.target.value }, (videos) => {
+        });
+        YTSearch({key: API_KEY, term: event.target.value}, (videos) => {
             this.setState({
                 videos: videos
             })
@@ -63,4 +64,4 @@ class App extends Component {
     }
 }
 
-render(<App />, document.getElementById('app'))
+render(<App />, document.getElementById('app'));
