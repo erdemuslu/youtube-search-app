@@ -1,10 +1,22 @@
-var config = {
+let webpack = require('webpack');
+
+let config = {
 
 	entry: './src/components/app.js',
 
 	output: {
-		filename: './bundle.js'
+		filename: './dist/bundle.js'
 	},
+
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+            compress: { warnings: false }
+        })
+    ],
+
+    node: {
+        fs: "empty"
+    },
 
 	module: {
 		loaders: [
@@ -14,6 +26,6 @@ var config = {
 		]
 	}
 
-}
+};
 
 module.exports = config;
