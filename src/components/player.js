@@ -6,7 +6,7 @@ class Player extends Component {
         super(props)
         this.state = {
             pause: false,
-            volume: 20
+            volume: 0
         }
         this.onStateChange = this.onStateChange.bind(this)
         this.handleVideo = this.handleVideo.bind(this)
@@ -24,9 +24,11 @@ class Player extends Component {
                 autoplay: 1
             }
         }
+
         const barStyle = {
-            width: parseInt(this.state.volume) + '%'
+                width: parseInt(this.state.volume) + '%'
         }
+
         return (
             <div className="player">
                 <div className="player__left">
