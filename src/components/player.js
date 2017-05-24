@@ -7,7 +7,8 @@ class Player extends Component {
         this.state = {
             pause: false,
             volume: 10,
-            currentDuration: 0
+            currentDuration: 0,
+            ration: 0
         }
         this.onStateChange = this.onStateChange.bind(this)
         this.handleVideo = this.handleVideo.bind(this)
@@ -17,6 +18,7 @@ class Player extends Component {
         this.setVolume = this.setVolume.bind(this)
         this.like = this.like.bind(this)
         this.updateDuration = this.updateDuration.bind(this)
+        this.changeDuration = this.changeDuration.bind(this)
     }
     render() {
         const opts = {
@@ -32,7 +34,7 @@ class Player extends Component {
         }
 
         let durationBarStyle = {
-            width: this.state.currentDuration + '%'
+            width: this.state.ratio + '%'
         }
 
         return (
@@ -106,6 +108,16 @@ class Player extends Component {
                         style={durationBarStyle} 
                         className="duration__bar">
                     </div>
+                    <div className="duration__control">
+                        <input
+                            type="range"
+                            min="0"
+                            max="100"
+                            step={this.state.eachSeconds}
+                            value={this.state.ratio}
+                            onChange={this.changeDuration}
+                        />
+                    </div>
                 </div>
                 <div className="player__hidden">
                     <YouTube
@@ -122,25 +134,26 @@ class Player extends Component {
         )
     }
 
+    changeDuration(event) {
+        const seekTo = Math.floor(this.state.fullDuration * event.target.value / 100)
+        this.state.player.seekTo(seekTo)
+    }
+
     updateDuration() {
-        let currentDuration = this.state.currentDuration
-        let duration = Math.round(parseInt(this.state.player.getDuration()))
         let updateDuration = setInterval(() => {
-            this.setState({
-                currentDuration: this.state.currentDuration + 1
-            })
-            console.log(currentDuration)
-        }, this.state.eachSeconds)
-        setTimeout(() => {
-            if (!this.state.updateDuration) {
-                clearInterval(updateDuration)
-                updateDuration = null
+            if (this.state.updateDuration) {
+                let currentDuration = Math.floor(this.state.player.getCurrentTime()),
+                    fullDuration = Math.floor(this.state.player.getDuration()),
+                    ratio = currentDuration * 100 / fullDuration
                 this.setState({
-                    currentDuration: this.state.player.getCurrentTime()
+                    currentDuration: currentDuration,
+                    fullDuration: fullDuration,
+                    ratio: ratio
                 })
-                console.log('clear works')
+            } else {
+                console.log(this.state.currentDuration)
             }
-        }, 100)
+        }, 1000)
     }
 
     onStateChange(event) {
@@ -158,7 +171,7 @@ class Player extends Component {
     }
     
     onPlayVideo() {
-        let eachSeconds = Math.round(this.state.player.getDuration()) * 10
+        let eachSeconds = 100 / Math.floor(this.state.player.getDuration())
         this.setState({
             pause: true,
             eachSeconds: eachSeconds,
@@ -181,6 +194,9 @@ class Player extends Component {
     handleVideo(event) {
         const control = this.state.pause
         if (control) {
+            this.setState({
+                updateDuration: false
+            })
             this.onPauseVideo()
         } else {
             this.onPlayVideo()
