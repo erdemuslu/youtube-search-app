@@ -19,6 +19,7 @@ class Player extends Component {
         this.like = this.like.bind(this)
         this.updateDuration = this.updateDuration.bind(this)
         this.changeDuration = this.changeDuration.bind(this)
+        this.browserNotification = this.browserNotification.bind(this)
     }
     render() {
         const opts = {
@@ -134,6 +135,33 @@ class Player extends Component {
         )
     }
 
+    browserNotification() {
+        // Let's check if the browser supports notifications
+        if (!("Notification" in window)) {
+            alert("This browser does not support desktop notification")
+        }
+        // Let's check whether notification permissions have already been granted
+        else if (Notification.permission === "granted") {
+            // If it's okay let's create a notification
+            var notification = new Notification(this.props.title, {
+            icon: this.props.photo
+            });
+        }
+        // Otherwise, we need to ask the user for permission
+        else if (Notification.permission !== "denied") {
+            Notification.requestPermission(function (permission) {
+                // If the user accepts, let's create a notification
+                if (permission === "granted") {
+                    var notification = new Notification(this.props.title, {
+                        icon: this.props.photo
+                    })
+                }
+            })
+        }
+        // At last, if the user has denied notifications, and you 
+        // want to be respectful there is no need to bother them any more.
+    }
+
     changeDuration(event) {
         const seekTo = Math.floor(this.state.fullDuration * event.target.value / 100)
         this.state.player.seekTo(seekTo)
@@ -180,6 +208,8 @@ class Player extends Component {
         this.state.player.setVolume(parseInt(this.state.volume))
         this.updateDuration()
         this.state.player.playVideo()
+        this.browserNotification()
+        console.log('added notification')
     }
 
     onEnd() {

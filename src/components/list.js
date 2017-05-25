@@ -84,6 +84,7 @@ class List extends Component {
                     handleUserList={this.handleUserList}
                     activeUserList={this.state.activeUserList}
                     handleVideoMode={this.handleVideoMode}
+                    photo={this.state.photo}
                 />
                 <SelectedBackground
                     className={this.state.isOpened ? 'selectedBackground selectedBackground--opened' : 'selectedBackground'}
