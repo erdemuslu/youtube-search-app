@@ -12,3 +12,4 @@ COMPLETED ITEM
 --------------
 ✔ Marquee Problem
 ✔ Add duration of the song
+✔ Add browser notification
