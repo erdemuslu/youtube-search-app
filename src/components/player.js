@@ -209,7 +209,6 @@ class Player extends Component {
         this.updateDuration()
         this.state.player.playVideo()
         this.browserNotification()
-        console.log('added notification')
     }
 
     onEnd() {

@@ -160,6 +160,14 @@
     z-index: 7
     background: #ffffff
     box-shadow: 0 -24px 48px 0 rgba(0,0,0,.04)
+    &:before
+        position: absolute
+        content: ''
+        top: -8px
+        left: 0
+        height: 8px
+        width: 100%
+        background: transparent
     @media (max-width: 768px)
         justify-content: center
     &__control
@@ -227,7 +235,8 @@
                 overflow: hidden
                 animation: marquee 4s linear infinite
                 span
-                    width: calc(50% - 1rem)
+                    width: calc(50% - 4rem)
+                    margin-right: 8rem
                 &:hover
                     width: 100%
                     animation: none
