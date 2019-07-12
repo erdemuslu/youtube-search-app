@@ -17,7 +17,7 @@ class Search extends Component {
                     onChange={this.handleValue}
                     value={this.state.value}
                     type="text"
-                    placeholder="type someting to serach"
+                    placeholder="type someting to search"
                     autoFocus
                 />
                 <button
